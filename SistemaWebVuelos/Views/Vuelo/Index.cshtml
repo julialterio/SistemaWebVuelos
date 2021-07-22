@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SistemaWebVuelos.Models.Vuelo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p>
+    @Html.ActionLink("Crear nuevo vuelo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Origen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Matricula)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Origen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Matricula)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.VueloID }) |
+            @Html.ActionLink("Detalles", "Detail", new { matricula = item.Matricula }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.VueloID })|
+            @Html.ActionLink("Traer Por Destino", "TraerPorDestino", new { destino = item.Destino })|
+        </td>
+    </tr>
+}
+
+</table>
